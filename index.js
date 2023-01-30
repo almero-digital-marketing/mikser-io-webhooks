@@ -16,7 +16,7 @@ export default function (options = {}) {
 
     return {
         async trigger(uri) {
-            const hookUrl = `${url}/webhooks`
+            const hookUrl = `${url}/mikser/webhooks`
             try {
                 logger.info('Mikser web hooks trigger: %s %s', hookUrl, uri)
                 const response = await fetch(hookUrl, {
@@ -26,16 +26,16 @@ export default function (options = {}) {
                 })
                 const result = await response.json()
                 if (!result.success) {
-                    logger.error('Mikser web hooks trigger error: %s %s %s', hookUrl, uri, result.message)
+                    logger.error('Mikser web hooks trigger error: %s %s', uri, result.message)
                 }
             } catch (err) {
-                logger.error('Mikser web hooks trigger error: %s %s %s', hookUrl, uri, err.message)
+                logger.error('Mikser web hooks trigger error: %s %s', uri, err.message)
             }
         },
         async created(name, entity) {
-            const hookUrl = `${url}/webhooks/${name}`
+            const hookUrl = `${url}/mikser/webhooks/${name}`
             try {
-                logger.info('Mikser web hooks created: %s %s', hookUrl, entity.id)
+                logger.info('Mikser web hooks created: %s %s', name, entity.id)
                 const response = await fetch(hookUrl, {
                     method: 'POST',
                     headers,
@@ -43,16 +43,16 @@ export default function (options = {}) {
                 })
                 const result = await response.json()
                 if (!result.success) {
-                    logger.error('Mikser web hooks created error: %s %s %s', hookUrl, entity.id, result.message)
+                    logger.error('Mikser web hooks created error: %s %s %s', name, entity.id, result.message)
                 }
             } catch (err) {
-                logger.error('Mikser web hooks created error: %s %s %s', hookUrl, entity.id, err.message)
+                logger.error('Mikser web hooks created error: %s %s %s', name, entity.id, err.message)
             }
         },
         async updated(name, entity) {
-            const hookUrl = `${url}/webhooks/${name}`
+            const hookUrl = `${url}/mikser/webhooks/${name}`
             try {
-                logger.info('Mikser web hooks updated: %s %s', hookUrl, entity.id)
+                logger.info('Mikser web hooks updated: %s %s', name, entity.id)
                 const response = await fetch(hookUrl, {
                     method: 'PUT',
                     headers,
@@ -60,16 +60,16 @@ export default function (options = {}) {
                 })
                 const result = await response.json()
                 if (!result.success) {
-                    logger.error('Mikser web hooks updated error: %s %s %s', hookUrl, entity.id, result.message)
+                    logger.error('Mikser web hooks updated error: %s %s %s', name, entity.id, result.message)
                 }
             } catch (err) {
-                logger.error('Mikser web hooks updated error: %s %s %s', hookUrl, entity.id, err.message)
+                logger.error('Mikser web hooks updated error: %s %s %s', name, entity.id, err.message)
             }
         },
         async deleted(name, entity) {
-            const hookUrl = `${url}/webhooks/${name}`
+            const hookUrl = `${url}/mikser/webhooks/${name}`
             try {
-                logger.info('Mikser web hooks deleted: %s %s', hookUrl, entity.id)
+                logger.info('Mikser web hooks deleted: %s %s', name, entity.id)
                 const response = await fetch(hookUrl, {
                     method: 'DELETE',
                     headers,
@@ -77,10 +77,10 @@ export default function (options = {}) {
                 })
                 const result = await response.json()
                 if (!result.success) {
-                    logger.error('Mikser web hooks deleted error: %s %s %s', hookUrl, entity.id, result.message)
+                    logger.error('Mikser web hooks deleted error: %s %s %s', name, entity.id, result.message)
                 }
             } catch (err) {
-                logger.error('Mikser web hooks deleted error: %s %s %s', hookUrl, entity.id, err.message)
+                logger.error('Mikser web hooks deleted error: %s %s %s', name, entity.id, err.message)
             }
         }
     }
