@@ -18,7 +18,7 @@ export default function (options = {}) {
         async trigger(uri) {
             const hookUrl = `${url}/mikser/webhooks`
             try {
-                logger.info('Mikser web hooks trigger: %s %s', hookUrl, uri)
+                logger.info('Mikser web hooks trigger: %s', uri)
                 const response = await fetch(hookUrl, {
                     method: 'POST',
                     headers,
@@ -26,10 +26,10 @@ export default function (options = {}) {
                 })
                 const result = await response.json()
                 if (!result.success) {
-                    logger.error('Mikser web hooks trigger error: %s %s', uri, result.message)
+                    logger.error('Mikser web hooks trigger error: [%s] %s %s', hookUrl, uri, result.message)
                 }
             } catch (err) {
-                logger.error('Mikser web hooks trigger error: %s %s', uri, err.message)
+                logger.error('Mikser web hooks trigger error: [%s] %s %s', hookUrl, uri, err.message)
             }
         },
         async created(name, entity) {
