@@ -2,7 +2,12 @@ export default function (options = {}) {
     const { url, token, logger = console } = options
     if (!url) {
         logger.warn('Mikser web hooks url is missing')
-        return
+        return {
+            trigger() {},
+            created() {},
+            updated() {},
+            deleted() {},
+        }
     }
     logger.info('Mikser web hooks initalized: %s', url)
 
