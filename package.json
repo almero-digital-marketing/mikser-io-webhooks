@@ -1,6 +1,6 @@
 {
   "name": "mikser-io-webhooks",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -13,5 +13,8 @@
   "bugs": {
     "url": "https://github.com/almero-digital-marketing/mikser-io-webhooks/issues"
   },
-  "homepage": "https://github.com/almero-digital-marketing/mikser-io-webhooks#readme"
+  "homepage": "https://github.com/almero-digital-marketing/mikser-io-webhooks#readme",
+  "dependencies": {
+    "queue": "^6.0.2"
+  }
 }
